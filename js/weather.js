@@ -46,7 +46,7 @@ function displayWeather(data) {
             </div>
         </div>
         <div class="mt-3">
-            <img src="http://openweathermap.org/img/wn/${weather[0].icon}@2x.png" alt="${description}" class="img-fluid">
+            <img src="http://openweathermap.org/img/wn/${weather[0].icon}@2x.png" alt="${description} weather icon" class="img-fluid">
         </div>
     `;
 }
