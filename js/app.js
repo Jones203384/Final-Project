@@ -43,3 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Function to update page title dynamically (for future use)
+function updatePageTitle(title) {
+    document.title = title + ' - Campus Life Super App';
+}
