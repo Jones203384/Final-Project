@@ -7,7 +7,7 @@
 
 // ===== API CONFIGURATION =====
 // Replace YOUR_SPOONACULAR_API_KEY with your actual API key from Spoonacular
-const SPOONACULAR_API_KEY = 'YOUR_SPOONACULAR_API_KEY';
+const SPOONACULAR_API_KEY = 'abaa3817d0254f7c9694ae3b06f099f6';
 
 // ===== FETCH RANDOM RECIPE FROM API =====
 // Purpose: Make async request to Spoonacular API for random recipe suggestion
@@ -44,7 +44,7 @@ function displayRecipe(recipe) {
     // Create recipe card with all details
     recipeContainer.innerHTML = `
         <div class="card">
-            <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}" style="height: 200px; object-fit: cover;">
+            <img src="${recipe.image || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIFJlY2lwZSBJbWFnZTwvdGV4dD48L3N2Zz4='}" class="card-img-top" alt="${recipe.title}" style="height: 200px; object-fit: cover;" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='">
             <div class="card-body">
                 <h5 class="card-title">${recipe.title}</h5>
                 <p class="card-text">${recipe.summary ? recipe.summary.replace(/<[^>]*>/g, '') : 'No summary available.'}</p>

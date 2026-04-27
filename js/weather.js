@@ -7,7 +7,7 @@
 
 // ===== API CONFIGURATION =====
 // Replace YOUR_OPENWEATHER_API_KEY with your actual API key from OpenWeatherMap
-const API_KEY = 'YOUR_OPENWEATHER_API_KEY';
+const API_KEY = 'cbc586ff2cefddc997e16369516a90ac';
 const CITY = 'College Station'; // Change to your campus city
 const UNITS = 'imperial'; // Use 'metric' for Celsius, 'imperial' for Fahrenheit
 
@@ -63,7 +63,7 @@ function displayWeather(data) {
             </div>
         </div>
         <div class="mt-3">
-            <img src="http://openweathermap.org/img/wn/${weather[0].icon}@2x.png" alt="${description} weather icon" class="img-fluid">
+            <img src="http://openweathermap.org/img/wn/${weather[0].icon}@2x.png" alt="${description} weather icon" class="img-fluid" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPufinIj48L3RleHQ+PC9zdmc+'">
         </div>
     `;
 }

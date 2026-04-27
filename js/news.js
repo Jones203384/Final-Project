@@ -7,7 +7,7 @@
 
 // ===== API CONFIGURATION =====
 // Replace YOUR_NEWS_API_KEY with your actual API key from NewsAPI
-const NEWS_API_KEY = 'YOUR_NEWS_API_KEY';
+const NEWS_API_KEY = '7ff98191a9f84f0faf3072fad7f149ce';
 const QUERY = 'education'; // Search query for campus-related news
 const COUNTRY = 'us'; // Country code for news filtering
 
@@ -58,7 +58,7 @@ function displayNews(articles) {
         // Create article card with image, title, description, and link
         articleElement.innerHTML = `
             <div class="card h-100">
-                <img src="${article.urlToImage || 'assets/placeholder.jpg'}" class="card-img-top" alt="${article.title}" style="height: 200px; object-fit: cover;">
+                <img src="${article.urlToImage || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlIEF2YWlsYWJsZTwvdGV4dD48L3N2Zz4='}" class="card-img-top" alt="${article.title}" style="height: 200px; object-fit: cover;" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">${article.title}</h5>
                     <p class="card-text flex-grow-1">${article.description || 'No description available.'}</p>
