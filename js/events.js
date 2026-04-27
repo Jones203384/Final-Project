@@ -1,6 +1,12 @@
-// Events page JavaScript for Campus Life Super App
+/**
+ * Events Management
+ * Purpose: Display, search, filter, and manage campus events
+ * Features: Event data storage, search functionality, category filtering, modal details, RSVP
+ */
 
-// Static events data (placeholder for future API integration)
+// ===== STATIC EVENTS DATA =====
+// Purpose: Local data storage for events (placeholder for future API/database integration)
+// Each event contains: id, title, category, date, time, location, description, rsvp status
 const eventsData = [
     {
         id: 1,
@@ -54,16 +60,20 @@ const eventsData = [
     }
 ];
 
-// Function to display events
+// ===== DISPLAY EVENTS ON PAGE =====
+// Purpose: Render event cards in grid layout with Bootstrap cards
+// Creates clickable event cards with details button for modal interaction
 function displayEvents(events) {
     const eventsContainer = document.getElementById('events-container');
     eventsContainer.innerHTML = '';
 
+    // Handle no results case
     if (events.length === 0) {
         eventsContainer.innerHTML = '<div class="col-12"><p class="text-center">No events found.</p></div>';
         return;
     }
 
+    // Create card for each event
     events.forEach(event => {
         const eventElement = document.createElement('div');
         eventElement.className = 'col-md-6 col-lg-4 mb-4';
@@ -82,11 +92,15 @@ function displayEvents(events) {
     });
 }
 
-// Function to show event details in modal
+// ===== SHOW EVENT DETAILS IN MODAL =====
+// Purpose: Display full event information in Bootstrap modal when user clicks "Learn More"
+// Features: Title, description, date/time, location, category
 function showEventDetails(eventId) {
+    // Find event by ID in events array
     const event = eventsData.find(e => e.id === eventId);
     if (!event) return;
 
+    // Populate modal with event data
     const modal = new bootstrap.Modal(document.getElementById('eventDetailModal'));
     document.getElementById('eventDetailModalLabel').textContent = event.title;
     document.getElementById('event-detail-content').innerHTML = `
@@ -99,11 +113,15 @@ function showEventDetails(eventId) {
     modal.show();
 }
 
-// Function to filter events based on search and category
+// ===== FILTER EVENTS =====
+// Purpose: Filter events based on search term and category selection
+// Logic: Combined filtering - match search AND category
 function filterEvents() {
+    // Get filter values from input elements
     const searchTerm = document.getElementById('event-search').value.toLowerCase();
     const category = document.getElementById('event-category').value;
 
+    // Filter events that match both search term and category
     const filteredEvents = eventsData.filter(event => {
         const matchesSearch = event.title.toLowerCase().includes(searchTerm) || 
                              event.description.toLowerCase().includes(searchTerm);
@@ -111,20 +129,23 @@ function filterEvents() {
         return matchesSearch && matchesCategory;
     });
 
+    // Display filtered results
     displayEvents(filteredEvents);
 }
 
-// Event listeners for search and filter
+// ===== EVENT LISTENERS FOR SEARCH AND FILTER =====
+// Purpose: Attach handlers for real-time search and filter functionality
+// Features: Live search as user types, filter button click, category selection
 document.addEventListener('DOMContentLoaded', function() {
     // Display all events initially
     displayEvents(eventsData);
 
-    // Search input event listener
+    // Search input event listener - filters as user types
     document.getElementById('event-search').addEventListener('input', filterEvents);
 
     // Filter button event listener
     document.getElementById('filter-events-btn').addEventListener('click', filterEvents);
 
-    // Category select event listener
+    // Category select event listener - filters when category changes
     document.getElementById('event-category').addEventListener('change', filterEvents);
 });

@@ -57,6 +57,8 @@ The project is deployed on GitHub Pages. To deploy your own version:
 ### 1. Home Page
 - Overview of the app with navigation to all features
 - Quick access to weather, latest news, and campus map
+- Featured events preview with modal details
+- Dining snapshot and announcements section
 
 ### 2. Campus Weather
 - Displays current weather conditions for the campus location
@@ -76,46 +78,20 @@ The project is deployed on GitHub Pages. To deploy your own version:
 ### 5. Dining Information
 - Menu suggestions and dining hall hours
 - Nutritional information for meals
+- Meal plan management and favorites
 - How to use: Check the Dining page for current menus and hours
 
-## Campus App Wireframe Navigation SOP
+### 6. Campus Events
+- Browse and search campus events
+- Filter by category (academic, social, sports, career)
+- Event detail modals with RSVP buttons
+- How to use: Visit the Events page; search or filter to find events
 
-### Home Page Flow
-- Start: Open App
-- Land on the Home Page
-- Display Header/Logo and Top Navigation with global links
-- Show Hero/Welcome area with image and text
-- Present Quick Links buttons
-- Show Featured Events Preview cards
-- Display Dining Snapshot placeholder and Announcements
-- Show Footer
-- From Home, users can navigate to the Events Page, Dining Page, or Student Resources Page
-
-### Events Page Flow
-- Show Header/Logo and Top Navigation
-- Display Search/Filter Bar and Event Cards List
-- Selecting an event opens an Event Detail Preview/Modal with RSVP/Action Buttons
-- Show Footer
-- Users can return Home or move to other pages through global navigation
-
-### Dining Page Flow
-- Show Header/Logo and Top Navigation
-- Display Dining Hall Status/Hours and Menu/API placeholder
-- Show Favorites/Meal Plan section and Map/Location placeholder
-- Show Footer
-- Users can navigate to Home, Events, or Resources through global navigation
-
-### Student Resources Page Flow
-- Show Header/Logo and Top Navigation
-- Display Search and Categories Grid
-- Show Helpful Links/Cards and Alerts/Updates area
-- Show Footer
-- Users can navigate to other pages through global navigation
-
-### Global Navigation Behavior
-- Each page includes links to Home, Events, Dining, and Student Resources
-- Users can move between pages without returning to Home first
-- End: Exit the app
+### 7. Student Resources
+- Academic support, health services, financial aid, and career services
+- Search and categorized resources
+- Alerts and updates section
+- How to use: Browse by category or search for specific resources
 
 ## Future Improvements or Stretch Goals
 

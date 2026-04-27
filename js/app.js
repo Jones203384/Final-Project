@@ -1,6 +1,12 @@
-// General JavaScript for Campus Life Super App
+/**
+ * Main Application JavaScript
+ * Purpose: Handle global app functionality, utility functions, and shared event listeners
+ * Features: Smooth scrolling, loading spinners, keyboard navigation, page title updates
+ */
 
-// Function to handle smooth scrolling for anchor links
+// ===== SMOOTH SCROLLING FOR ANCHOR LINKS =====
+// Purpose: Provide smooth animated scrolling when clicking anchor links
+// This improves user experience with a fluid transition to target sections
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -13,7 +19,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Function to add loading spinner for dynamic content
+// ===== LOADING SPINNER FUNCTIONS =====
+// Purpose: Display and hide loading indicators when fetching dynamic content
+// showLoading(elementId): Displays spinner in specified element
+// hideLoading(elementId): Removes spinner from specified element
 function showLoading(elementId) {
     const element = document.getElementById(elementId);
     if (element) {
@@ -21,7 +30,6 @@ function showLoading(elementId) {
     }
 }
 
-// Function to hide loading spinner
 function hideLoading(elementId) {
     const element = document.getElementById(elementId);
     if (element) {
@@ -29,7 +37,9 @@ function hideLoading(elementId) {
     }
 }
 
-// Accessibility: Add keyboard navigation for cards
+// ===== KEYBOARD NAVIGATION FOR CARDS =====
+// Purpose: Allow users to navigate card elements using Enter or Space keys
+// Improves accessibility for keyboard-only users
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
@@ -44,24 +54,28 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Function to update page title dynamically (for future use)
-function updatePageTitle(title) {
-    document.title = title + ' - Campus Life Super App';
-}
-
-// Event-driven programming: Toggle extra announcements
+// ===== ANNOUNCEMENTS TOGGLE =====
+// Purpose: Show/hide additional announcements with event-driven programming
+// Demonstrates interactivity by toggling display of extra content
 document.addEventListener('DOMContentLoaded', function() {
     const toggleBtn = document.getElementById('toggle-announcements-btn');
     if (toggleBtn) {
         toggleBtn.addEventListener('click', function() {
             const extraAnnouncements = document.getElementById('extra-announcements');
-            if (extraAnnouncements.style.display === 'none') {
+            if (extraAnnouncements && extraAnnouncements.style.display === 'none') {
                 extraAnnouncements.style.display = 'block';
                 toggleBtn.textContent = 'Show Less Announcements';
-            } else {
+            } else if (extraAnnouncements) {
                 extraAnnouncements.style.display = 'none';
                 toggleBtn.textContent = 'Show More Announcements';
             }
         });
     }
 });
+
+// ===== PAGE TITLE UPDATE =====
+// Purpose: Dynamically update page title for improved navigation clarity
+// Useful for single-page app features or dynamic content changes
+function updatePageTitle(title) {
+    document.title = title + ' - Campus Life Super App';
+}

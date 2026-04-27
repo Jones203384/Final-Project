@@ -1,6 +1,12 @@
-// Student Resources page JavaScript for Campus Life Super App
+/**
+ * Student Resources Management
+ * Purpose: Display, search, filter, and organize campus student resources
+ * Features: Resource categorization (academic, health, financial, career), search functionality
+ */
 
-// Static resources data (placeholder for future database/API integration)
+// ===== STATIC RESOURCES DATA =====
+// Purpose: Local data storage for student resources (placeholder for future database integration)
+// Each resource contains: id, title, category, description, link, type
 const resourcesData = [
     {
         id: 1,
@@ -68,16 +74,20 @@ const resourcesData = [
     }
 ];
 
-// Function to display resources
+// ===== DISPLAY RESOURCES ON PAGE =====
+// Purpose: Render resource cards in grid layout with Bootstrap cards
+// Features: Category badges, descriptions, links
 function displayResources(resources) {
     const resourcesContainer = document.getElementById('resources-container');
     resourcesContainer.innerHTML = '';
 
+    // Handle no results case
     if (resources.length === 0) {
         resourcesContainer.innerHTML = '<div class="col-12"><p class="text-center">No resources found.</p></div>';
         return;
     }
 
+    // Create card for each resource
     resources.forEach(resource => {
         const resourceElement = document.createElement('div');
         resourceElement.className = 'col-md-6 col-lg-3 mb-4';
@@ -95,27 +105,36 @@ function displayResources(resources) {
     });
 }
 
-// Function to filter resources by category
+// ===== FILTER RESOURCES BY CATEGORY =====
+// Purpose: Display only resources that match the selected category
+// Logic: If category parameter provided, filter; otherwise show all
 function filterResources(category) {
     const filteredResources = category ? resourcesData.filter(resource => resource.category === category) : resourcesData;
     displayResources(filteredResources);
 }
 
-// Function to search resources
+// ===== SEARCH RESOURCES =====
+// Purpose: Filter resources based on user search input
+// Logic: Match search term against resource title and description (case-insensitive)
 function searchResources() {
     const searchTerm = document.getElementById('resource-search').value.toLowerCase();
+    
+    // Filter resources that match search term in title or description
     const filteredResources = resourcesData.filter(resource => 
         resource.title.toLowerCase().includes(searchTerm) || 
         resource.description.toLowerCase().includes(searchTerm)
     );
+    
     displayResources(filteredResources);
 }
 
-// Event listeners
+// ===== EVENT LISTENERS FOR SEARCH =====
+// Purpose: Attach handlers for search functionality
+// Features: Live search as user types
 document.addEventListener('DOMContentLoaded', function() {
     // Display all resources initially
     displayResources(resourcesData);
 
-    // Search input event listener
+    // Search input event listener - filters as user types
     document.getElementById('resource-search').addEventListener('input', searchResources);
 });

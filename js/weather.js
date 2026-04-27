@@ -1,19 +1,32 @@
-// Weather API integration for Campus Life Super App
+/**
+ * Weather API Integration
+ * Purpose: Fetch and display real-time campus weather data from OpenWeatherMap API
+ * API: OpenWeatherMap (https://openweathermap.org/api)
+ * Features: Current temperature, humidity, wind speed, weather icon, error handling
+ */
 
-const API_KEY = 'YOUR_OPENWEATHER_API_KEY'; // Replace with your actual API key
-const CITY = 'College Station'; // Replace with your campus city
-const UNITS = 'imperial'; // Use 'metric' for Celsius
+// ===== API CONFIGURATION =====
+// Replace YOUR_OPENWEATHER_API_KEY with your actual API key from OpenWeatherMap
+const API_KEY = 'YOUR_OPENWEATHER_API_KEY';
+const CITY = 'College Station'; // Change to your campus city
+const UNITS = 'imperial'; // Use 'metric' for Celsius, 'imperial' for Fahrenheit
 
-// Function to fetch weather data
+// ===== FETCH WEATHER DATA FROM API =====
+// Purpose: Make async request to OpenWeatherMap API and handle response
+// Flow: Display loading spinner → Fetch data → Display or show error
 async function fetchWeather() {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_KEY}&units=${UNITS}`;
 
     try {
         showLoading('weather-content');
+        
+        // API request with error checking
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
+        
+        // Parse JSON response and display weather data
         const data = await response.json();
         displayWeather(data);
     } catch (error) {
@@ -24,16 +37,20 @@ async function fetchWeather() {
     }
 }
 
-// Function to display weather data
+// ===== DISPLAY WEATHER INFORMATION =====
+// Purpose: Format and render weather data to the DOM
+// Extracts: Temperature, description, humidity, wind speed, and weather icon
 function displayWeather(data) {
     const weatherContent = document.getElementById('weather-content');
     const { main, weather, wind } = data;
 
+    // Extract weather metrics from API response
     const temperature = Math.round(main.temp);
     const description = weather[0].description;
     const humidity = main.humidity;
     const windSpeed = Math.round(wind.speed);
 
+    // Render weather data with OpenWeatherMap icon
     weatherContent.innerHTML = `
         <div class="row">
             <div class="col-md-6">
@@ -51,7 +68,8 @@ function displayWeather(data) {
     `;
 }
 
-// Function to display error message
+// ===== ERROR HANDLING =====
+// Purpose: Display user-friendly error messages when API fails or is misconfigured
 function displayError(message) {
     const weatherContent = document.getElementById('weather-content');
     weatherContent.innerHTML = `
@@ -62,5 +80,6 @@ function displayError(message) {
     `;
 }
 
-// Load weather data when page loads
+// ===== AUTO-LOAD ON PAGE LOAD =====
+// Purpose: Automatically fetch and display weather when Weather page loads
 document.addEventListener('DOMContentLoaded', fetchWeather);
