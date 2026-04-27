@@ -1,0 +1,290 @@
+/* ===== CAMPUS LIFE SUPER APP CUSTOM STYLES ===== */
+/* Purpose: Provide consistent, modern styling throughout the application */
+/* Theme: Professional blue/purple gradient with responsive design */
+
+/* ===== BASE STYLES ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+}
+
+main {
+    min-height: calc(100vh - 200px);
+}
+
+/* ===== HERO SECTION STYLES ===== */
+/* Purpose: Create an eye-catching welcome area with gradient background */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero .lead {
+    font-size: 1.3rem;
+    opacity: 0.95;
+}
+
+/* ===== CARD STYLES ===== */
+/* Purpose: Create consistent hover effects and visual hierarchy */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.event-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.event-card:hover {
+    background-color: #f8f9fa;
+}
+
+.resource-card {
+    border-left: 5px solid #667eea;
+}
+
+/* ===== QUICK LINKS SECTION ===== */
+/* Purpose: Provide prominent action buttons for main app features */
+.quick-links {
+    padding: 2rem 0;
+}
+
+.quick-links .btn {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.quick-links .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== SECTION HEADERS ===== */
+/* Purpose: Consistent styling for section titles */
+h3 {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+/* ===== NAVBAR STYLES ===== */
+/* Purpose: Custom branding and navigation styling */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+}
+
+.nav-link {
+    transition: color 0.3s ease;
+    margin-left: 0.5rem;
+}
+
+.nav-link:hover {
+    color: #e7e7e7 !important;
+}
+
+/* ===== FEATURED EVENTS SECTION ===== */
+/* Purpose: Highlight upcoming events on home page */
+.featured-events .card {
+    border-top: 4px solid #667eea;
+}
+
+/* ===== DINING SECTION ===== */
+/* Purpose: Highlight dining-related content */
+.dining-snapshot {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+/* ===== ANNOUNCEMENTS SECTION ===== */
+/* Purpose: Style announcement alerts prominently */
+.alert {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== BUTTONS ===== */
+/* Purpose: Consistent button styling throughout app */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: transparent;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* ===== BADGE STYLES ===== */
+/* Purpose: Highlight categories and tags */
+.badge {
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ===== LIST GROUP STYLES ===== */
+/* Purpose: Consistent styling for lists */
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: transparent;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+/* ===== FOOTER STYLES ===== */
+/* Purpose: Consistent footer styling */
+footer {
+    margin-top: auto;
+    background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+    border-top: 3px solid #667eea;
+}
+
+footer p {
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* ===== MODAL STYLES ===== */
+/* Purpose: Enhance modal appearance for event details */
+.modal-content {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px 10px 0 0;
+}
+
+.modal-header .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+/* ===== SPINNER/LOADING STYLES ===== */
+/* Purpose: Match spinner color to app theme */
+.spinner-border {
+    color: #667eea;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+/* Purpose: Ensure proper display on smaller screens */
+@media (max-width: 768px) {
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    .quick-links .btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+
+    main {
+        min-height: calc(100vh - 150px);
+    }
+}
+
+/* ===== TABLET SPECIFIC STYLES ===== */
+@media (max-width: 1024px) {
+    .card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+/* Purpose: Ensure proper focus states and keyboard navigation */
+.btn:focus,
+.navbar-toggler:focus,
+.card:focus,
+a:focus {
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    outline: none;
+}
+
+/* ===== FOCUS VISIBLE FOR BETTER KEYBOARD NAVIGATION ===== */
+:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* ===== PRINT STYLES ===== */
+/* Purpose: Optimize appearance when printing */
+@media print {
+    navbar,
+    footer {
+        display: none;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    .card {
+        page-break-inside: avoid;
+    }
+}
+
+
+.card:focus-within {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}

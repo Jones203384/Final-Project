@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dining - Campus Life Super App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Campus Life Super App</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="dining.html">Dining</a></li>
+                        <li class="nav-item"><a class="nav-link" href="student-resources.html">Resources</a></li>
+                        <li class="nav-item"><a class="nav-link" href="weather.html">Weather</a></li>
+                        <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+                        <li class="nav-item"><a class="nav-link" href="map.html">Map</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <!-- PAGE TITLE AND DESCRIPTION -->
+        <!-- Purpose: Provide context for the dining page -->
+        <h1 class="text-center mb-4">Campus Dining</h1>
+        <p class="text-center lead text-muted mb-5">Explore our dining options, check hours, and discover meal ideas</p>
+
+        <!-- DINING HALL STATUS AND HOURS -->
+        <!-- Purpose: Display current hours and status of dining facilities -->
+        <div class="row mb-5">
+            <div class="col-md-6 mb-4">
+                <h3>🕒 Dining Hall Hours</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <h5>Main Dining Hall</h5>
+                                <p class="mb-1"><strong>Breakfast:</strong> 7:00 AM - 10:00 AM</p>
+                                <p class="mb-1"><strong>Lunch:</strong> 11:00 AM - 2:00 PM</p>
+                                <p class="mb-0"><strong>Dinner:</strong> 5:00 PM - 8:00 PM</p>
+                            </li>
+                            <hr>
+                            <li class="mb-3">
+                                <h5>Campus Cafe</h5>
+                                <p class="mb-1"><strong>Hours:</strong> 8:00 AM - 6:00 PM (Mon-Fri)</p>
+                                <p class="mb-0"><strong>Weekend:</strong> 10:00 AM - 4:00 PM</p>
+                            </li>
+                            <hr>
+                            <li>
+                                <h5>Late Night Snack Shop</h5>
+                                <p class="mb-0"><strong>Hours:</strong> 5:00 PM - 12:00 AM (Daily)</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MENU AND API PLACEHOLDER -->
+            <!-- Purpose: Display meal ideas and recipes from API -->
+            <div class="col-md-6 mb-4">
+                <h3>🍽️ Meal Ideas</h3>
+                <button id="get-recipe-btn" class="btn btn-primary mb-3">
+                    Get Random Recipe Idea
+                </button>
+                <div id="recipe-container" class="card">
+                    <div class="card-body">
+                        <p class="text-muted">Click the button above to load a recipe suggestion!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAVORITES AND MEAL PLAN SECTION -->
+        <!-- Purpose: Allow students to save favorites and view meal plans -->
+        <div class="row mb-5">
+            <div class="col-md-6 mb-4">
+                <h3>⭐ My Favorite Meals</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <p class="text-muted mb-3">Save your favorite meals for quick reference.</p>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Grilled Chicken & Pasta
+                                <span class="badge bg-primary rounded-pill">Monday</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Veggie Stir Fry Bowl
+                                <span class="badge bg-success rounded-pill">Wednesday</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                BBQ Pulled Pork
+                                <span class="badge bg-info rounded-pill">Friday</span>
+                            </li>
+                        </ul>
+                        <button class="btn btn-outline-primary mt-3 w-100">
+                            Add Favorites
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MEAL PLAN INFORMATION -->
+            <!-- Purpose: Display meal plan options and purchasing info -->
+            <div class="col-md-6 mb-4">
+                <h3>💳 Meal Plan Options</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <p class="text-muted mb-3">Choose the plan that works best for you.</p>
+                        
+                        <div class="mb-3 p-3 bg-light rounded">
+                            <h5>Premium Plan</h5>
+                            <p class="mb-1"><strong>Meals/Semester:</strong> 150 meals</p>
+                            <p class="mb-1"><strong>Flex Dollars:</strong> $150</p>
+                            <p><strong>Price:</strong> $2,500/semester</p>
+                        </div>
+
+                        <div class="mb-3 p-3 bg-light rounded">
+                            <h5>Standard Plan</h5>
+                            <p class="mb-1"><strong>Meals/Semester:</strong> 100 meals</p>
+                            <p class="mb-1"><strong>Flex Dollars:</strong> $100</p>
+                            <p><strong>Price:</strong> $2,000/semester</p>
+                        </div>
+
+                        <div class="mb-3 p-3 bg-light rounded">
+                            <h5>Economy Plan</h5>
+                            <p class="mb-1"><strong>Meals/Semester:</strong> 50 meals</p>
+                            <p class="mb-1"><strong>Flex Dollars:</strong> $75</p>
+                            <p><strong>Price:</strong> $1,200/semester</p>
+                        </div>
+
+                        <button class="btn btn-primary w-100">
+                            View My Current Plan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAP AND LOCATION PLACEHOLDER -->
+        <!-- Purpose: Show location of dining facilities on campus -->
+        <div class="row">
+            <div class="col-12">
+                <h3>📍 Dining Locations</h3>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="bg-light p-5 text-center mb-3" style="border-radius: 10px;">
+                            <p class="text-muted mb-0">
+                                🗺️ Interactive map showing all dining facilities on campus
+                            </p>
+                            <p class="text-muted small">
+                                (Future integration: Google Maps API with dining location markers)
+                            </p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <h5>Main Dining Hall</h5>
+                                <p class="text-muted">Building A, Near Student Center</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <h5>Campus Cafe</h5>
+                                <p class="text-muted">Library, 2nd Floor</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <h5>Late Night Shop</h5>
+                                <p class="text-muted">Student Center, Ground Floor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <!-- Purpose: Provide consistent footer across all pages -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <p>&copy; 2024 Campus Life Super App. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dining.js"></script>
+</body>
+</html>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>&copy; 2024 Campus Life Super App. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dining.js"></script>
+</body>
+</html>

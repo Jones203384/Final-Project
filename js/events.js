@@ -1,151 +1,245 @@
 /**
- * Events Management
- * Purpose: Display, search, filter, and manage campus events
- * Features: Event data storage, search functionality, category filtering, modal details, RSVP
+ * Events Page Functionality
+ * Purpose: Manage event display, search/filter, and RSVP modal functionality
+ * Features: Event listing, dynamic search filtering, category filtering, modal interactions
+ * Pattern: Event-driven programming using DOM event listeners
  */
 
-// ===== STATIC EVENTS DATA =====
-// Purpose: Local data storage for events (placeholder for future API/database integration)
-// Each event contains: id, title, category, date, time, location, description, rsvp status
+// ===== MOCK EVENT DATA =====
+// Purpose: Simulate event data from an API (future enhancement: replace with real API)
+// Structure: Array of event objects with all necessary information for display and filtering
 const eventsData = [
     {
         id: 1,
         title: 'Welcome Week Kickoff',
         category: 'social',
-        date: '2024-08-25',
-        time: '16:00',
-        location: 'Main Quad',
-        description: 'Join us for the exciting start of the semester! Enjoy games, free food, live music, and meet your fellow students.',
-        rsvp: false
+        date: '2026-05-01',
+        time: '6:00 PM',
+        location: 'Student Center',
+        description: 'Join us for the annual Welcome Week celebration featuring live music, food trucks, and activities. Meet new students and staff!',
+        attendees: 250
     },
     {
         id: 2,
-        title: 'Career Fair',
-        category: 'career',
-        date: '2024-09-10',
-        time: '10:00',
-        location: 'Student Center Ballroom',
-        description: 'Network with leading companies and discover internship and job opportunities in your field.',
-        rsvp: false
+        title: 'Chemistry Lab Workshop',
+        category: 'academic',
+        date: '2026-04-28',
+        time: '3:00 PM',
+        location: 'Science Building',
+        description: 'Learn advanced laboratory techniques in our state-of-the-art chemistry lab. Bring your notebook and lab coat.',
+        attendees: 45
     },
     {
         id: 3,
-        title: 'Homecoming Game',
+        title: 'Campus Sports Tournament',
         category: 'sports',
-        date: '2024-10-15',
-        time: '19:00',
-        location: 'Kyle Field',
-        description: 'Celebrate tradition and school spirit at our annual homecoming football game!',
-        rsvp: false
+        date: '2026-05-05',
+        time: '10:00 AM',
+        location: 'Athletic Complex',
+        description: 'Participate in various sports activities including basketball, soccer, and volleyball. Teams needed!',
+        attendees: 180
     },
     {
         id: 4,
-        title: 'Guest Lecture: AI in Education',
-        category: 'academic',
-        date: '2024-09-20',
-        time: '14:00',
-        location: 'Lecture Hall 101',
-        description: 'Learn about the latest developments in artificial intelligence and its applications in education.',
-        rsvp: false
+        title: 'Cultural Festival 2026',
+        category: 'cultural',
+        date: '2026-05-10',
+        time: '4:00 PM',
+        location: 'Campus Lawn',
+        description: 'Celebrate diversity through international food, music, dance, and art from around the world.',
+        attendees: 500
     },
     {
         id: 5,
-        title: 'Student Club Fair',
-        category: 'social',
-        date: '2024-08-30',
-        time: '11:00',
-        location: 'Campus Green',
-        description: 'Discover student clubs and organizations that match your interests.',
-        rsvp: false
+        title: 'Job Fair 2026',
+        category: 'academic',
+        date: '2026-05-12',
+        time: '9:00 AM',
+        location: 'Career Center',
+        description: 'Connect with top employers and explore internship and full-time job opportunities. Bring your resume!',
+        attendees: 300
+    },
+    {
+        id: 6,
+        title: 'Volleyball Match - Home vs Rivals',
+        category: 'sports',
+        date: '2026-05-08',
+        time: '7:00 PM',
+        location: 'Sports Arena',
+        description: 'Cheer on our volleyball team as they face off against our biggest rivals. Free admission for students!',
+        attendees: 800
     }
 ];
 
-// ===== DISPLAY EVENTS ON PAGE =====
-// Purpose: Render event cards in grid layout with Bootstrap cards
-// Creates clickable event cards with details button for modal interaction
-function displayEvents(events) {
-    const eventsContainer = document.getElementById('events-container');
-    eventsContainer.innerHTML = '';
+// ===== GLOBAL VARIABLES FOR STATE MANAGEMENT =====
+// Purpose: Keep track of current filters and selected event for modal
+let currentSearchTerm = '';
+let currentCategory = '';
+let selectedEvent = null;
 
-    // Handle no results case
-    if (events.length === 0) {
-        eventsContainer.innerHTML = '<div class="col-12"><p class="text-center">No events found.</p></div>';
-        return;
-    }
+// ===== DISPLAY ALL EVENTS =====
+// Purpose: Render event cards to DOM based on current filters
+// Filters: Search term and category selection
+function displayEvents(eventsToDisplay = eventsData) {
+    const container = document.getElementById('events-container');
+    container.innerHTML = ''; // Clear existing content
 
-    // Create card for each event
-    events.forEach(event => {
-        const eventElement = document.createElement('div');
-        eventElement.className = 'col-md-6 col-lg-4 mb-4';
-        eventElement.innerHTML = `
-            <div class="card h-100">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">${event.title}</h5>
-                    <p class="card-text">${event.description}</p>
-                    <p class="text-muted">Date: ${new Date(event.date).toLocaleDateString()} | Time: ${event.time}</p>
-                    <p class="text-muted">Location: ${event.location}</p>
-                    <button class="btn btn-primary mt-auto" onclick="showEventDetails(${event.id})">Learn More</button>
-                </div>
-            </div>
-        `;
-        eventsContainer.appendChild(eventElement);
-    });
-}
-
-// ===== SHOW EVENT DETAILS IN MODAL =====
-// Purpose: Display full event information in Bootstrap modal when user clicks "Learn More"
-// Features: Title, description, date/time, location, category
-function showEventDetails(eventId) {
-    // Find event by ID in events array
-    const event = eventsData.find(e => e.id === eventId);
-    if (!event) return;
-
-    // Populate modal with event data
-    const modal = new bootstrap.Modal(document.getElementById('eventDetailModal'));
-    document.getElementById('eventDetailModalLabel').textContent = event.title;
-    document.getElementById('event-detail-content').innerHTML = `
-        <p><strong>Description:</strong> ${event.description}</p>
-        <p><strong>Date:</strong> ${new Date(event.date).toLocaleDateString()}</p>
-        <p><strong>Time:</strong> ${event.time}</p>
-        <p><strong>Location:</strong> ${event.location}</p>
-        <p><strong>Category:</strong> ${event.category.charAt(0).toUpperCase() + event.category.slice(1)}</p>
-    `;
-    modal.show();
-}
-
-// ===== FILTER EVENTS =====
-// Purpose: Filter events based on search term and category selection
-// Logic: Combined filtering - match search AND category
-function filterEvents() {
-    // Get filter values from input elements
-    const searchTerm = document.getElementById('event-search').value.toLowerCase();
-    const category = document.getElementById('event-category').value;
-
-    // Filter events that match both search term and category
-    const filteredEvents = eventsData.filter(event => {
-        const matchesSearch = event.title.toLowerCase().includes(searchTerm) || 
-                             event.description.toLowerCase().includes(searchTerm);
-        const matchesCategory = !category || event.category === category;
+    // Filter events based on search term and category
+    const filtered = eventsToDisplay.filter(event => {
+        const matchesSearch = event.title.toLowerCase().includes(currentSearchTerm.toLowerCase()) ||
+                            event.description.toLowerCase().includes(currentSearchTerm.toLowerCase());
+        const matchesCategory = currentCategory === '' || event.category === currentCategory;
         return matchesSearch && matchesCategory;
     });
 
-    // Display filtered results
-    displayEvents(filteredEvents);
+    // Display message if no events match filters
+    if (filtered.length === 0) {
+        container.innerHTML = `
+            <div class="col-12">
+                <div class="alert alert-info" role="alert">
+                    <h4 class="alert-heading">No Events Found</h4>
+                    <p>Try adjusting your search or filter criteria.</p>
+                </div>
+            </div>
+        `;
+        return;
+    }
+
+    // Create and display event card for each filtered event
+    filtered.forEach(event => {
+        const eventCard = createEventCard(event);
+        container.appendChild(eventCard);
+    });
 }
 
-// ===== EVENT LISTENERS FOR SEARCH AND FILTER =====
-// Purpose: Attach handlers for real-time search and filter functionality
-// Features: Live search as user types, filter button click, category selection
-document.addEventListener('DOMContentLoaded', function() {
-    // Display all events initially
-    displayEvents(eventsData);
+// ===== CREATE EVENT CARD ELEMENT =====
+// Purpose: Build a Bootstrap card element for a single event
+// Returns: DOM element ready to be appended to container
+// Features: Event title, date, time, location, description preview, attendee count, click handler
+function createEventCard(event) {
+    const card = document.createElement('div');
+    card.className = 'col-md-6 col-lg-4 mb-4';
+    
+    // Format date for display
+    const eventDate = new Date(event.date).toLocaleDateString('en-US', {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    });
 
-    // Search input event listener - filters as user types
-    document.getElementById('event-search').addEventListener('input', filterEvents);
+    // Build card HTML with event information
+    card.innerHTML = `
+        <div class="card h-100 event-card" data-event-id="${event.id}" role="button" tabindex="0">
+            <div class="card-body d-flex flex-column">
+                <span class="badge bg-info mb-2" style="width: fit-content;">${event.category}</span>
+                <h5 class="card-title">${event.title}</h5>
+                <p class="card-text text-muted mb-3">${event.description.substring(0, 100)}...</p>
+                
+                <div class="event-info mb-3">
+                    <p class="mb-1"><strong>📅 Date:</strong> ${eventDate}</p>
+                    <p class="mb-1"><strong>🕐 Time:</strong> ${event.time}</p>
+                    <p class="mb-1"><strong>📍 Location:</strong> ${event.location}</p>
+                    <p class="mb-0"><strong>👥 Attendees:</strong> ${event.attendees}</p>
+                </div>
+            </div>
+            <div class="card-footer bg-light">
+                <button class="btn btn-primary btn-sm w-100">View Details</button>
+            </div>
+        </div>
+    `;
 
-    // Filter button event listener
-    document.getElementById('filter-events-btn').addEventListener('click', filterEvents);
+    // EVENT LISTENER: Handle card click to open modal
+    // Purpose: Allow users to click on any part of the card to see event details
+    card.addEventListener('click', () => showEventModal(event));
+    
+    // KEYBOARD ACCESSIBILITY: Handle Enter/Space keys on card
+    card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            showEventModal(event);
+        }
+    });
 
-    // Category select event listener - filters when category changes
-    document.getElementById('event-category').addEventListener('change', filterEvents);
+    return card;
+}
+
+// ===== SHOW EVENT DETAIL MODAL =====
+// Purpose: Display modal with full event information and RSVP button
+// Parameters: Event object to display
+function showEventModal(event) {
+    selectedEvent = event;
+    
+    // Format date for display in modal
+    const eventDate = new Date(event.date).toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
+    // Build detailed event information for modal body
+    const modalBody = document.getElementById('modal-body-content');
+    modalBody.innerHTML = `
+        <h5>${event.title}</h5>
+        <div class="mb-3">
+            <span class="badge bg-info">${event.category}</span>
+        </div>
+        <p><strong>Date:</strong> ${eventDate}</p>
+        <p><strong>Time:</strong> ${event.time}</p>
+        <p><strong>Location:</strong> ${event.location}</p>
+        <p><strong>Expected Attendees:</strong> ${event.attendees}</p>
+        <hr>
+        <p>${event.description}</p>
+    `;
+
+    // Update modal title
+    document.getElementById('eventDetailLabel').textContent = event.title;
+
+    // Show the modal
+    const modal = new bootstrap.Modal(document.getElementById('eventDetailModal'));
+    modal.show();
+}
+
+// ===== SEARCH FUNCTIONALITY =====
+// Purpose: Filter events based on user search input
+// Event-driven: Triggered on search button click or input change
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('event-search');
+    const searchBtn = document.getElementById('search-btn');
+    const categoryFilter = document.getElementById('category-filter');
+    const rsvpBtn = document.getElementById('rsvp-btn');
+
+    // EVENT LISTENER: Search button click
+    searchBtn.addEventListener('click', () => {
+        currentSearchTerm = searchInput.value;
+        displayEvents();
+    });
+
+    // EVENT LISTENER: Real-time search as user types
+    searchInput.addEventListener('keyup', () => {
+        currentSearchTerm = searchInput.value;
+        displayEvents();
+    });
+
+    // EVENT LISTENER: Category filter dropdown change
+    categoryFilter.addEventListener('change', (e) => {
+        currentCategory = e.target.value;
+        displayEvents();
+    });
+
+    // EVENT LISTENER: RSVP button click
+    rsvpBtn.addEventListener('click', () => {
+        if (selectedEvent) {
+            // Show user feedback for RSVP action
+            alert(`✓ You have successfully RSVP'd to "${selectedEvent.title}"!\nCheck your email for confirmation details.`);
+            
+            // Close modal after RSVP
+            const modal = bootstrap.Modal.getInstance(document.getElementById('eventDetailModal'));
+            modal.hide();
+        }
+    });
+
+    // Initial display of all events on page load
+    displayEvents();
 });
