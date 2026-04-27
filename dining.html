@@ -30,15 +30,104 @@
 
     <main class="container my-5">
         <h1 class="text-center mb-4">Campus Dining</h1>
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Dining Hall Hours</h3>
-                <ul class="list-group">
-                    <li class="list-group-item">Breakfast: 7:00 AM - 10:00 AM</li>
-                    <li class="list-group-item">Lunch: 11:00 AM - 2:00 PM</li>
-                    <li class="list-group-item">Dinner: 5:00 PM - 8:00 PM</li>
-                </ul>
+        
+        <!-- Dining Hall Status/Hours Section -->
+        <section class="dining-status mb-5">
+            <h2>Dining Hall Status & Hours</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Main Dining Hall</h5>
+                            <p class="card-text">Status: <span class="badge bg-success">Open</span></p>
+                            <p>Breakfast: 7:00 AM - 10:00 AM</p>
+                            <p>Lunch: 11:00 AM - 2:00 PM</p>
+                            <p>Dinner: 5:00 PM - 8:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Café</h5>
+                            <p class="card-text">Status: <span class="badge bg-success">Open</span></p>
+                            <p>Open 24/7</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <!-- Menu/API Placeholder Section -->
+        <section class="menu-placeholder mb-5">
+            <h2>Today's Menu</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Breakfast Special</h5>
+                            <p class="card-text">Oatmeal with fresh berries and nuts. (API placeholder - menu data would be fetched here)</p>
+                            <p class="text-muted">Calories: 320 | Protein: 12g</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Lunch Special</h5>
+                            <p class="card-text">Grilled chicken wrap with veggies. (API placeholder - menu data would be fetched here)</p>
+                            <p class="text-muted">Calories: 450 | Protein: 35g</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Favorites/Meal Plan Section -->
+        <section class="favorites mb-5">
+            <h2>Favorites & Meal Plan</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Your Favorites</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">Chicken Caesar Salad</li>
+                        <li class="list-group-item">Vegetable Stir Fry</li>
+                        <li class="list-group-item">Turkey Sandwich</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3>Meal Plan Balance</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Remaining Meals: 15</h5>
+                            <p class="card-text">Dining Dollars: $45.00</p>
+                            <button class="btn btn-primary">Add Funds</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map/Location Placeholder Section -->
+        <section class="location-placeholder mb-5">
+            <h2>Dining Locations</h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Campus Dining Map</h5>
+                            <p class="card-text">Interactive map showing all dining locations on campus. (Google Maps API placeholder)</p>
+                            <div id="dining-map" style="height: 300px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                                <p>Map will be loaded here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meal Ideas Section (existing) -->
+        <div class="row">
             <div class="col-md-6">
                 <h3>Meal Ideas</h3>
                 <button id="get-recipe-btn" class="btn btn-primary mb-3">Get Random Recipe</button>
