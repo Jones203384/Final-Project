@@ -78,6 +78,45 @@ The project is deployed on GitHub Pages. To deploy your own version:
 - Nutritional information for meals
 - How to use: Check the Dining page for current menus and hours
 
+## Campus App Wireframe Navigation SOP
+
+### Home Page Flow
+- Start: Open App
+- Land on the Home Page
+- Display Header/Logo and Top Navigation with global links
+- Show Hero/Welcome area with image and text
+- Present Quick Links buttons
+- Show Featured Events Preview cards
+- Display Dining Snapshot placeholder and Announcements
+- Show Footer
+- From Home, users can navigate to the Events Page, Dining Page, or Student Resources Page
+
+### Events Page Flow
+- Show Header/Logo and Top Navigation
+- Display Search/Filter Bar and Event Cards List
+- Selecting an event opens an Event Detail Preview/Modal with RSVP/Action Buttons
+- Show Footer
+- Users can return Home or move to other pages through global navigation
+
+### Dining Page Flow
+- Show Header/Logo and Top Navigation
+- Display Dining Hall Status/Hours and Menu/API placeholder
+- Show Favorites/Meal Plan section and Map/Location placeholder
+- Show Footer
+- Users can navigate to Home, Events, or Resources through global navigation
+
+### Student Resources Page Flow
+- Show Header/Logo and Top Navigation
+- Display Search and Categories Grid
+- Show Helpful Links/Cards and Alerts/Updates area
+- Show Footer
+- Users can navigate to other pages through global navigation
+
+### Global Navigation Behavior
+- Each page includes links to Home, Events, Dining, and Student Resources
+- Users can move between pages without returning to Home first
+- End: Exit the app
+
 ## Future Improvements or Stretch Goals
 
 - User authentication for personalized features

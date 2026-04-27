@@ -1,10 +1,12 @@
 /* Custom styles for Campus Life Super App */
 
+/* General body styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
 }
 
+/* Hero section styling with gradient background */
 .hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -13,6 +15,7 @@ body {
     margin-bottom: 3rem;
 }
 
+/* Card hover effects for interactive elements */
 .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: none;
@@ -24,11 +27,12 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Footer positioning */
 footer {
     margin-top: auto;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments for mobile devices */
 @media (max-width: 768px) {
     .hero {
         padding: 2rem 1rem;
@@ -43,7 +47,7 @@ footer {
     }
 }
 
-/* Accessibility improvements */
+/* Accessibility improvements for focus states */
 .btn:focus,
 .navbar-toggler:focus {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);

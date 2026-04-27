@@ -48,3 +48,20 @@ document.addEventListener('DOMContentLoaded', function() {
 function updatePageTitle(title) {
     document.title = title + ' - Campus Life Super App';
 }
+
+// Event-driven programming: Toggle extra announcements
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('toggle-announcements-btn');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+            const extraAnnouncements = document.getElementById('extra-announcements');
+            if (extraAnnouncements.style.display === 'none') {
+                extraAnnouncements.style.display = 'block';
+                toggleBtn.textContent = 'Show Less Announcements';
+            } else {
+                extraAnnouncements.style.display = 'none';
+                toggleBtn.textContent = 'Show More Announcements';
+            }
+        });
+    }
+});
